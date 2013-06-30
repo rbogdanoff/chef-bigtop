@@ -1,5 +1,7 @@
 .vagrant
 Berksfile.lock
+.project
+.DS_Store
 *~
 *#
 .#*

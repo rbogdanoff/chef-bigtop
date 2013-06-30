@@ -5,6 +5,14 @@ This cookbook installs Apache Bigtop http://bigtop.apache.org/
 using Vagrant onto a single VM.  You can use this as a 'sandbox'
 for hadoop to try it out.  This is NOT a 'production' cookbook!!
 
+This is not for 'production':
+this is for learning/testing/developing hadoop ecosystem/bigtop.  Vagrant is being used
+to provided a virtualized environment for this use case.  As with all Vagrant, the use case
+is NOT 'production' i.e. Vagrant is a development/testing tool...You typically will do `vagrant destroy`
+on occasion to wipe out your vagrant box that you may have hacked, and create a clean one again.  So...
+don't put data into your Vagrant VM that you want to permanently keep!!!  If you want to do this,
+you should keep that data external to your vagrant VM and load it with a script post creating a new vagrant VM.
+
 Currently, this is a 'single server' install.  TODO: soon there will be a (small) cluster install too!!! 
 
 By default, it will install hadoop hdfs and hive as this is all that I have

@@ -7,7 +7,7 @@ for hadoop to try it out.  This is NOT a 'production' cookbook!!
 
 Currently, this is a 'single server' install.  TODO: soon there will be a (small) cluster install too!!! 
 
-By default, it will install hadoop hdsf and hive as this is all that I have
+By default, it will install hadoop hdfs and hive as this is all that I have
 tested thus far.  If you want to install the other components (e.g. hbase, pig, mahout, etc.)
 see `attributes/default.rb` it should be obvious what to do
 
@@ -21,7 +21,7 @@ Requirements
 * Ruby 1.9.x 
 * the bundle gem  
   `gem install bundle`
-* Vagrant 1.2.2 (www.vagrantup.com) - If you have not used Vagrant before, check out there short 'get started' tutorial.
+* Vagrant 1.2.2 (www.vagrantup.com) - If you have not used Vagrant before, check out their short 'get started' tutorial.
 * VirtualBox 4.2.12 (4.2.14 has bug don't use it with Vagrant yet)
 * the vagrant plugin vagrant-omnibus
   `vagrant plugin install vagrant-omnibus`
@@ -61,7 +61,9 @@ See `attributes/default.rb` for default values.
 
 # Recipes
 
-## default - this does it all. just use bigtop::default in your runlist 
+## default
+this does it all. just use bigtop::default in your run_list 
+
 All other recipes are private
 
 Development
@@ -71,7 +73,7 @@ TODO: will provide info on how to develop/improve these recipes.  I will be addi
 
 Known Issues
 ============
-Default components that get installed are hadoop hdsf and hive.  I have not tested the others, but
+Default components that get installed are hadoop hdfs and hive.  I have not tested the others, but
 I did notice that in a single server install, hbase rest and yarn nodemanger both use port 8080 and this
 conflict will break yarn nodemanger service from starting.  Will look into this.
 
@@ -87,7 +89,7 @@ The Future
 
 * get this to work with bigtop 0.6.0
 * add testing
-* change all bigtop component installations
+* test all bigtop component installations
 * create recipe for bigtop build VM
 * create recipe for a cluster
 * add support for other platforms (debian)

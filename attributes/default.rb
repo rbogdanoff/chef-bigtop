@@ -21,7 +21,7 @@
 default['bigtop']['user'] = "vagrant"  # shell user you want for using bigtop
 
 include_attribute "java"
-default['bigtop']['version'] = "0.5.0"
+default['bigtop']['version'] = "0.6.0"
 
 # bigtop archive 
 default['bigtop']['archive_base'] = "http://archive.apache.org/dist/bigtop/"
@@ -40,9 +40,9 @@ end
 
 # bigtop components 
 # only have tested hadoophdfs and hive.  So, by default we only install these
-default['bigtop']['components'] = ["hadoop", "hive"]
+default['bigtop']['components'] = ["hadoop", "hue"]
 
 # if you want the 'full monty' use this list instead - has not been tested!!
 #default['bigtop']['components'] = ["hadoop", "hbase", "hive", "pig", "mahout", "flume", "sqoop", "oozie",
-#                                   "whirr"]  
+#                                   "whirr", "hue"]  
 

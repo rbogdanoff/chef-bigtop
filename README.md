@@ -15,11 +15,11 @@ you should keep that data external to your vagrant VM and load it with a script 
 
 Currently, this is a 'single server' install.  TODO: soon there will be a (small) cluster install too!!! 
 
-By default, it will install hadoop hdfs and hive as this is all that I have
-tested thus far.  If you want to install the other components (e.g. hbase, pig, mahout, etc.)
+By default, it will install hadoop hdfs as this is all that I have
+tested thus far.  If you want to install the other components (e.g. hive, hbase, pig, mahout, etc.)
 see `attributes/default.rb` it should be obvious what to do
 
-This cookbook essentially does what is described at https://cwiki.apache.org/confluence/display/BIGTOP/How+to+install+Hadoop+distribution+from+Bigtop+0.5.0 
+This cookbook essentially does what is described at https://cwiki.apache.org/confluence/display/BIGTOP/How+to+install+Hadoop+distribution+from+Bigtop+0.6.0 
 
 Requirements
 ============
@@ -65,7 +65,7 @@ Then, to test that hadoop is running, try to run the pi test mapreduce job
 See `attributes/default.rb` for default values.
 
 * `node['bigtop']['components']`  list of bigtop components to install
-* `node['bigtop']['version']` bigtop version to install - only 0.5.0 is supported right now
+* `node['bigtop']['version']` bigtop version to install - 0.5.0 and 0.6.0 are supported.  0.6.0 is the default
 
 # Recipes
 
@@ -95,10 +95,9 @@ in Chef and Ruby best practices feedback ron.bogdanoff@gmail.com
 The Future
 ==========
 
-* get this to work with bigtop 0.6.0
 * add testing
 * test all bigtop component installations
-* create recipe for bigtop build VM
+* create recipe for a 'bigtop development' VM - used if you want to do dev on bigtop itself
 * create recipe for a cluster
 * add support for other platforms (debian)
 * add support for AWS provider (vagrant stuff)

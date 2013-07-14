@@ -39,8 +39,8 @@ when "rhel"
 end
 
 # bigtop components 
-# only have tested hadoophdfs and hive.  So, by default we only install these
-default['bigtop']['components'] = ["hadoop", "hue"]
+# only have tested hadoophdfs.  So, by default we only install these
+default['bigtop']['components'] = ["hadoop"]
 
 # if you want the 'full monty' use this list instead - has not been tested!!
 #default['bigtop']['components'] = ["hadoop", "hbase", "hive", "pig", "mahout", "flume", "sqoop", "oozie",

@@ -9,6 +9,9 @@ Vagrant.configure("2") do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
+  # make sure we have chef installed
+  config.omnibus.chef_version = "11.4.4"
+  
   config.vm.hostname = "bigtop"
 
   # Every Vagrant virtual environment requires a box to build off of.
@@ -56,6 +59,24 @@ Vagrant.configure("2") do |config|
   #
   # View the documentation for the provider you're using for more
   # information on available options.
+  # aws provider - when you use --provider=aws from command line
+  config.vm.provider :aws do |aws, override|
+    aws.access_key_id = "YOUR ACCESS KEY"
+    aws.secret_access_key = "YOUR SECRET KEY"
+    aws.instance_type = "m1.medium"
+    aws.region = "us-west-2"   #Oregon
+    aws.region_config "us-west-2" do |region|
+      region.ami = "ami-c00d80f0"
+      region.keypair_name = "YOUR KEYPAIR NAME"
+    end
+    aws.user_data = "#!/bin/bash\necho 'Defaults:ec2-user !requiretty' > /etc/sudoers.d/999-vagrant-cloud-init-requiretty && echo 'Defaults:root !requiretty' >> /etc/sudoers.d/999-vagrant-cloud-init-requiretty && chmod 440 /etc/sudoers.d/999-vagrant-cloud-init-requiretty && sleep 10"
+    aws.instance_ready_timeout = 360
+    aws.tags = {
+      'Name' => 'Bigtop'
+    }
+    override.ssh.username = "ec2-user"
+    override.ssh.private_key_path = "YOUR FULL PATH TO YOUR KEY FILE"
+  end
 
   config.ssh.max_tries = 40
   config.ssh.timeout   = 120
@@ -64,6 +85,7 @@ Vagrant.configure("2") do |config|
   # config.berkshelf.berksfile_path = "./Berksfile"
 
   # Enabling the Berkshelf plugin. To enable this globally, add this configuration
+
   # option to your ~/.vagrant.d/Vagrantfile file
   config.berkshelf.enabled = true
 
@@ -77,6 +99,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
+      # bigtop.user => "ec2-user"
     }
 
     chef.run_list = [

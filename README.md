@@ -53,6 +53,16 @@ When vagrant up has completed  you can ssh into the VM
   
 Then, to test that hadoop is running, try to run the pi test mapreduce job
   `hadoop jar /usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples*.jar pi 10 1000`
+
+## AWS
+There is basic AWS support.  You you want to run on EC2 instead of your desktop, do this...
+* Edit Vagrantfile and change the following parameters
+`aws.access_key_id = "YOUR ACCESS KEY"`
+`aws.secret_access_key = "YOUR SECRET KEY"`
+`override.ssh.private_key_path = "YOUR FULL PATH TO YOUR KEY FILE"`
+
+* then you can `vagrant up --provider=aws`
+* NOTE: vagrant only supports up,ssh,provision,destroy and NOT halt,reload so you will need to stop/start with AWS console once you vagrant up
   
 ### Chef Usage
 * TODO: show example of run_list and chef.json attribute override usage

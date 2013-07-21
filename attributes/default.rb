@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-default['bigtop']['user'] = "vagrant"  # shell user you want for using bigtop
+default['bigtop']['user'] = "ec2-user"  # shell user you want for using bigtop
 
 include_attribute "java"
 default['bigtop']['version'] = "0.6.0"

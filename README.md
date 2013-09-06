@@ -42,7 +42,7 @@ Requirements
 * A VM will be created on your machine with the hostname of 'bigtop' and an ip number of 33.33.33.10.  Add this line to your /etc/hosts file
   `33.33.33.10     bigtop`  
   
-# Usage - 'how to I run this thing?'
+# Usage - 'how do I run this thing?'
 You now should be set to go.  cd to the top level directory (where Vagrantfile is located) and start the vagrant box
   `vagrant up`
   

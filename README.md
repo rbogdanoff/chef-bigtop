@@ -19,7 +19,7 @@ By default, it will install hadoop hdfs as this is all that I have
 tested thus far.  If you want to install the other components (e.g. hive, hbase, pig, mahout, etc.)
 see `attributes/default.rb` it should be obvious what to do
 
-This cookbook essentially does what is described at https://cwiki.apache.org/confluence/display/BIGTOP/How+to+install+Hadoop+distribution+from+Bigtop+0.6.0 
+This cookbook essentially does what is described at https://cwiki.apache.org/confluence/display/BIGTOP/How+to+install+Hadoop+distribution+from+Bigtop+0.6.0   
 
 Requirements
 ============

@@ -25,6 +25,8 @@
 remote_file node.bigtop.repo_target do
   source node.bigtop.repo
   backup false
-  mode 0644
+  owner  'root'
+  group  'root'
+  mode   '0644'
   action :create
 end

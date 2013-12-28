@@ -1,6 +1,7 @@
 .vagrant
 Berksfile.lock
 .project
+.kitchen
 .DS_Store
 *~
 *#

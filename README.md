@@ -1,3 +1,8 @@
+chef-bigtop
+===========
+
+[![Built on Travis](https://secure.travis-ci.org/rbogdanoff/chef-bigtop.png)](http://travis-ci.org/rbogdanoff/chef-bigtop)
+
 Description
 ===========
 

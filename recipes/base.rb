@@ -1,6 +1,6 @@
 #
 # Author:: Ron Bogdanoff (<ron.bogdanoff@gmail.com>)
-# Cookbook Name:: bigtop 
+# Cookbook Name:: bigtop
 # Recipe:: base
 #
 # Copyright 2013, Ron Bogdanoff
@@ -18,10 +18,10 @@
 # limitations under the License.
 #
 
-# The private 'base' recipe for the bigtop cookbook.  This install/configures 
-# all common components 
+# The private 'base' recipe for the bigtop cookbook.  This install/configures
+# all common components
 
 # bigtop currently requires sun java6
-node.default.java.install_flavor = "oracle"
-node.default.java.oracle.accept_oracle_download_terms = true 
-include_recipe "java"
+node.default.java.install_flavor = 'oracle'
+node.default.java.oracle.accept_oracle_download_terms = true
+include_recipe 'java'

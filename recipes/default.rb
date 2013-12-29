@@ -17,6 +17,6 @@
 # limitations under the License.
 #
 #
-include_recipe "bigtop::base"
-include_recipe "bigtop::repo"
-include_recipe "bigtop::install"
+include_recipe 'bigtop::base'
+include_recipe 'bigtop::repo'
+include_recipe 'bigtop::install'

@@ -1,6 +1,6 @@
 #
 # Author:: Ron Bogdanoff (<ron.bogdanoff@gmail.com>)
-# Cookbook Name:: bigtop 
+# Cookbook Name:: bigtop
 # Recipe:: repo
 #
 # Copyright 2013, Ron Bogdanoff

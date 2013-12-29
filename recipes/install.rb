@@ -1,6 +1,6 @@
 #
 # Author:: Ron Bogdanoff (<ron.bogdanoff@gmail.com>)
-# Cookbook Name:: bigtop 
+# Cookbook Name:: bigtop
 # Recipe:: install
 #
 # Copyright 2013, Ron Bogdanoff
@@ -21,7 +21,7 @@
 # private recipe the will do the bigtop install
 
 # install bigtop components.  when done, notify configuration steps
-ruby_block "install_bigtop_components" do
+ruby_block 'install_bigtop_components' do
   block do
     node.bigtop.components.each do |component|
       Chef::Log.info "installing #{component} - this may take a few minutes"
@@ -29,45 +29,45 @@ ruby_block "install_bigtop_components" do
       install.run_command
     end
   end
-  notifies :create, "ruby_block[insert_java_home]",        :immediately
-  notifies :run, "execute[format_namenode]",               :immediately
-  notifies :run, "execute[seed_hdfs]",                     :delayed
-  notifies :start, "service[hadoop-yarn-resourcemanager]", :delayed
-  notifies :start, "service[hadoop-yarn-nodemanager]",     :delayed
-  notifies :run, "execute[start-bigtop-services]",         :delayed
+  notifies :create, 'ruby_block[insert_java_home]',        :immediately
+  notifies :run, 'execute[format_namenode]',               :immediately
+  notifies :run, 'execute[seed_hdfs]',                     :delayed
+  notifies :start, 'service[hadoop-yarn-resourcemanager]', :delayed
+  notifies :start, 'service[hadoop-yarn-nodemanager]',     :delayed
+  notifies :run, 'execute[start-bigtop-services]',         :delayed
   only_if  { node.bigtop.components }
 end
 
 # make sure JAVA_HOME is set in the 'bigtop-utils' file
-ruby_block "insert_java_home" do
+ruby_block 'insert_java_home' do
   block do
-    file = Chef::Util::FileEdit.new("/etc/default/bigtop-utils")
-    file.insert_line_if_no_match("^\s*export\s*JAVA_HOME\s*=\s*[\/a-zA-Z0-9]+\s*$", "export JAVA_HOME=#{node.java.java_home}")
+    file = Chef::Util::FileEdit.new('/etc/default/bigtop-utils')
+    file.insert_line_if_no_match('^\s*export\s*JAVA_HOME\s*=\s*[\/a-zA-Z0-9]+\s*$',
+                                 "export JAVA_HOME=#{node.java.java_home}")
     file.write_file
   end
   action :nothing
 end
 
 # only format once!! TODO: better way to check than seeing if VERSION file exists?
-execute "format_namenode" do
-  command "sh /etc/init.d/hadoop-hdfs-namenode init"
-  creates "/var/lib/hadoop-hdfs/cache/hdfs/dfs/name/current/VERSION"
+execute 'format_namenode' do
+  command 'sh /etc/init.d/hadoop-hdfs-namenode init'
+  creates '/var/lib/hadoop-hdfs/cache/hdfs/dfs/name/current/VERSION'
   action :nothing
 end
-
 
 # make sure hadoop-hdfs-namenode, "hadoop-hdfs-datanode services are
 # started before execute seed_hdfs
 
-service "hadoop-hdfs-namenode" do
+service 'hadoop-hdfs-namenode' do
   action :start
 end
-service "hadoop-hdfs-datanode" do
+service 'hadoop-hdfs-datanode' do
   action :start
 end
 
 # TODO/FIXME: improve only_if check, we currently only test ls /t*
-execute "seed_hdfs" do
+execute 'seed_hdfs' do
   command "hadoop fs -mkdir -p /user/#{node.bigtop.user} ;
            hadoop fs -chown #{node.bigtop.user}:#{node.bigtop.user} /user/#{node.bigtop.user} ;
            hadoop fs -chmod 770 /user/#{node.bigtop.user} ;
@@ -83,25 +83,25 @@ execute "seed_hdfs" do
            hadoop fs -mkdir -p /tmp/hadoop-yarn/staging/history/done_intermediate ;
            hadoop fs -chmod -R 1777 /tmp/hadoop-yarn/staging/history/done_intermediate ;
            hadoop fs -chown -R mapred:mapred /tmp/hadoop-yarn/staging"
-  user "hdfs"
+  user 'hdfs'
   action :nothing
   only_if "test  -z \"`hadoop fs -ls /t*`\""
 end
 
 # after hdfs_seed startup yarn
-service "hadoop-yarn-resourcemanager" do
-  supports :status => true, :restart => true, :reload => true
+service 'hadoop-yarn-resourcemanager' do
+  supports status: true, restart: true, reload: true
   action :nothing
 end
 
-service "hadoop-yarn-nodemanager" do
-  supports :status => true, :restart => true, :reload => true
+service 'hadoop-yarn-nodemanager' do
+  supports status: true, restart: true, reload: true
   action :nothing
 end
 
-# the bigtop package installs do not start the services!!, so we can do this here 
+# the bigtop package installs do not start the services!!, so we can do this here
 # by issuing runlevel 3 which will starts services in correct order (we hope)
-execute "start-bigtop-services" do
-  command "telinit 3"
+execute 'start-bigtop-services' do
+  command 'telinit 3'
   action :nothing
 end

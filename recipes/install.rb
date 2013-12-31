@@ -101,6 +101,10 @@ end
 
 # the bigtop package installs do not start the services!!, so we can do this here
 # by issuing runlevel 3 which will starts services in correct order (we hope)
+# TODO: when we refactor to separate recipes for each hadoop component
+# we will use service resource to start the service instead of the
+# brute force init 3 (so we don't restart services if we are only provisioning
+# a VM that is already running)
 execute 'start-bigtop-services' do
   command 'telinit 3'
   action :nothing

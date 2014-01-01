@@ -69,7 +69,7 @@ end
 
 # TODO/FIXME: improve only_if check, we currently only test ls /t*
 execute 'seed_hdfs' do
-  command "sudo sh /usr/lib/hadoop/libexec/init-hdfs.sh"
+  command 'sudo sh /usr/lib/hadoop/libexec/init-hdfs.sh'
   user 'root'
   action :nothing
  # only_if "test  -z \"`hadoop fs -ls /t*`\""

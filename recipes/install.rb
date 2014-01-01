@@ -32,6 +32,7 @@ ruby_block 'install_bigtop_components' do
   notifies :create, 'ruby_block[insert_java_home]',        :immediately
   notifies :run, 'execute[format_namenode]',               :immediately
   notifies :run, 'execute[seed_hdfs]',                     :delayed
+  notifies :run, 'execute[user_hdfs]',                     :delayed
   notifies :start, 'service[hadoop-yarn-resourcemanager]', :delayed
   notifies :start, 'service[hadoop-yarn-nodemanager]',     :delayed
   notifies :run, 'execute[start-bigtop-services]',         :delayed
@@ -68,24 +69,22 @@ end
 
 # TODO/FIXME: improve only_if check, we currently only test ls /t*
 execute 'seed_hdfs' do
+  command "sudo sh /usr/lib/hadoop/libexec/init-hdfs.sh"
+  user 'root'
+  action :nothing
+ # only_if "test  -z \"`hadoop fs -ls /t*`\""
+end
+
+# create hdfs dir for node.bigtop.user and change some other privs
+execute 'user_hdfs' do
   command "hadoop fs -mkdir -p /user/#{node.bigtop.user} ;
            hadoop fs -chown #{node.bigtop.user}:#{node.bigtop.user} /user/#{node.bigtop.user} ;
-           hadoop fs -chmod 770 /user/#{node.bigtop.user} ;
-           hadoop fs -mkdir /tmp ;
-           hadoop fs -chmod -R 1777 /tmp ;
-           hadoop fs -mkdir -p /var/log/hadoop-yarn ;
-           hadoop fs -chown yarn:mapred /var/log/hadoop-yarn ;
-           hadoop fs -mkdir -p /user/history ;
-           hadoop fs -chown mapred:mapred /user/history ;
-           hadoop fs -chmod 770 /user/history ;
-           hadoop fs -mkdir -p /tmp/hadoop-yarn/staging ;
+           hadoop fs -chmod 755 /user/#{node.bigtop.user} ;
            hadoop fs -chmod -R 1777 /tmp/hadoop-yarn/staging ;
-           hadoop fs -mkdir -p /tmp/hadoop-yarn/staging/history/done_intermediate ;
-           hadoop fs -chmod -R 1777 /tmp/hadoop-yarn/staging/history/done_intermediate ;
-           hadoop fs -chown -R mapred:mapred /tmp/hadoop-yarn/staging"
+           hadoop fs -chmod -R 1777 /tmp/hadoop-yarn/staging/history/done_intermediate"
   user 'hdfs'
   action :nothing
-  only_if "test  -z \"`hadoop fs -ls /t*`\""
+ # only_if "test  -z \"`hadoop fs -ls /user/#{node.bigtop.user}`\""
 end
 
 # after hdfs_seed startup yarn

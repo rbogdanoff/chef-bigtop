@@ -10,6 +10,8 @@ This cookbook installs Apache Bigtop http://bigtop.apache.org/
 using Vagrant onto a single VM.  You can use this as a 'sandbox'
 for hadoop to try it out.  This is NOT a 'production' cookbook!!
 
+current bigtop version being used is 0.7.0
+
 This is not for 'production':
 this is for learning/testing/developing hadoop ecosystem/bigtop.  Vagrant is being used
 to provided a virtualized environment for this use case.  As with all Vagrant, the use case
@@ -34,8 +36,8 @@ Requirements
 * Ruby 1.9.x 
 * the bundle gem  
   `gem install bundle`
-* Vagrant 1.2.2 (www.vagrantup.com) - If you have not used Vagrant before, check out their short 'get started' tutorial.
-* VirtualBox 4.2.12 (4.2.14 has bug don't use it with Vagrant yet)
+* Vagrant 1.4.1+ (www.vagrantup.com) - If you have not used Vagrant before, check out their short 'get started' tutorial.
+* VirtualBox 4.3.4 
 * the vagrant plugin vagrant-omnibus
   `vagrant plugin install vagrant-omnibus`
 * the vagrant plugin vagrant-berkshelf
@@ -80,7 +82,7 @@ There is basic AWS support.  You you want to run on EC2 instead of your desktop,
 See `attributes/default.rb` for default values.
 
 * `node['bigtop']['components']`  list of bigtop components to install
-* `node['bigtop']['version']` bigtop version to install - 0.5.0 and 0.6.0 are supported.  0.6.0 is the default
+* `node['bigtop']['version']` bigtop version to install - 0.7.0 is the default
 
 # Recipes
 
@@ -91,12 +93,11 @@ All other recipes are private
 
 Development
 ===========
-TODO: will provide info on how to develop/improve these recipes.  I will be adding tests 
-(ChefSpec/Rspec and test-kitchen) soon.
+TODO: Will create recipes for each hadoop component.
 
 Known Issues
 ============
-Default components that get installed are hadoop hdfs and hive.  I have not tested the others, but
+Default components that get installed are hadoop hdfs.  I have not tested the others, but
 I did notice that in a single server install, hbase rest and yarn nodemanger both use port 8080 and this
 conflict will break yarn nodemanger service from starting.  Will look into this.
 
@@ -110,7 +111,7 @@ in Chef and Ruby best practices feedback ron.bogdanoff@gmail.com
 The Future
 ==========
 
-* add testing
+* separate recipes for each hadoop component (hdfs, hbase, hive, etc.)
 * test all bigtop component installations
 * create recipe for a 'bigtop development' VM - used if you want to do dev on bigtop itself
 * create recipe for a cluster

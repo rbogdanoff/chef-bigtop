@@ -21,7 +21,7 @@
 default['bigtop']['user'] = 'vagrant'  # shell user you want for using bigtop
 
 include_attribute 'java'
-default['bigtop']['version'] = '0.6.0'
+default['bigtop']['version'] = '0.7.0'
 
 # bigtop archive
 default['bigtop']['archive_base'] = 'http://archive.apache.org/dist/bigtop/'

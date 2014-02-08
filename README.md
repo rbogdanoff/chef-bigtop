@@ -13,6 +13,9 @@ New Gemfile.lock - forgot to check it in last time.  This was causing some test 
 
 Fix a bug user_hdfs execute - related to a couple of yarn hdfs dirs that were missing
 
+Had to disable rubocop - it's not working, it's probably a gem compatibily issue, will
+fix next release
+
 Description
 ===========
 

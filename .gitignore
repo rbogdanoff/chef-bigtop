@@ -1,5 +1,4 @@
 .vagrant
-Berksfile.lock
 .project
 .kitchen
 .DS_Store
@@ -12,7 +11,6 @@ Berksfile.lock
 /cookbooks
 
 # Bundler
-Gemfile.lock
 bin/*
 .bundle/*
 

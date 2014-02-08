@@ -1,12 +1,34 @@
 ---
-driver_plugin: vagrant
-driver_config:
+driver:
+  name: vagrant
   require_chef_omnibus: true
   customize:
     memory: 2048
 
+# sometime I need to run test on aws, I have not figured out a way
+# to config ktichen to do both
+# driver:
+#   name: ec2
+#   aws_access_key_id: <%= ENV['AWS_ACCESS_KEY'] %>
+#   aws_secret_access_key: <%= ENV['AWS_SECRET_KEY'] %>
+#   aws_ssh_key_id: <%= ENV['AWS_SSH_KEY_ID'] %>
+#   ssh_key: <%= ENV['AWS_SSH_KEY_LOC'] %>
+#  # security_group_ids: ["sg-1a2b3c4d"]
+#   region: us-west-2
+#   availability_zone: us-west-2a
+#   flavor_id: m1.medium
+#   require_chef_omnibus: true
+# 
+# platforms:
+#   - name: centos-6.4
+#     driver: ec2
+#     driver_config:
+#       image_id: ami-c00d80f0
+#       username: ec2-user
+
 platforms:
   - name: centos-6.4
+    driver: vagrant
 
 suites:
   - name: default

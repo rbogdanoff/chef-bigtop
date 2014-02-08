@@ -80,7 +80,9 @@ execute 'user_hdfs' do
   command "hadoop fs -mkdir -p /user/#{node.bigtop.user} ;
            hadoop fs -chown #{node.bigtop.user}:#{node.bigtop.user} /user/#{node.bigtop.user} ;
            hadoop fs -chmod 755 /user/#{node.bigtop.user} ;
+           hadoop fs -mkdir -p /tmp/hadoop-yarn/staging ;
            hadoop fs -chmod -R 1777 /tmp/hadoop-yarn/staging ;
+           hadoop fs -mkdir -p /tmp/hadoop-yarn/staging/history/done_intermediate ;
            hadoop fs -chmod -R 1777 /tmp/hadoop-yarn/staging/history/done_intermediate"
   user 'hdfs'
   action :nothing

@@ -3,18 +3,6 @@ chef-bigtop
 
 [![Built on Travis](https://secure.travis-ci.org/rbogdanoff/chef-bigtop.png)](http://travis-ci.org/rbogdanoff/chef-bigtop)
 
-Fixes in 0.1.2
-==============
-Use Berkshelf 3.x (still in beta) as Berkshelf 2 has issues and broke this cookbook
-(related to how it was resolving the Java cookbook dependency)
-See https://github.com/berkshelf/berkshelf hopfully Berkshelf 3 will move to rubygems.org soon
-
-New Gemfile.lock - forgot to check it in last time.  This was causing some test failures
-
-Fix a bug user_hdfs execute - related to a couple of yarn hdfs dirs that were missing
-
-Had to disable rubocop - it's not working, it's probably a gem compatibily issue, will
-fix next release
 
 Description
 ===========

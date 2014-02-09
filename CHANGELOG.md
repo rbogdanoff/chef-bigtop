@@ -7,6 +7,7 @@ This file is used to list changes made in each version of chef-bigtop.
 * Use Berkshelf 3 to fix dependency issues
 * correct Gemfile.lock
 * Added missing yarn hdfs directories
+* Had to disable rubocop - it's not working, it's probably a gem compatibily issue, will fix next release
 
 
 ## 0.1.1:

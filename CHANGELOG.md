@@ -2,6 +2,18 @@
 
 This file is used to list changes made in each version of chef-bigtop.
 
+## 0.1.2:
+
+* Use Berkshelf 3 to fix dependency issues
+* correct Gemfile.lock
+* Added missing yarn hdfs directories
+
+
+## 0.1.1:
+
+* use bigtop 0.7.0
+* create test harness
+
 ## 0.1.0:
 
 * Initial release of chef-bigtop

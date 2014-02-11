@@ -62,13 +62,13 @@ Vagrant.configure("2") do |config|
     # information on available options.
     # aws provider - when you use --provider=aws from command line
     bigtop.vm.provider :aws do |aws, override|
-      aws.access_key_id = "AKIAJOIIOZEV6COYZMRA"
-      aws.secret_access_key = "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"
+      aws.access_key_id = ""
+      aws.secret_access_key = ""
       aws.instance_type = "m1.medium"
       aws.region = "us-west-2"   #Oregon
       aws.region_config "us-west-2" do |region|
         region.ami = "ami-c00d80f0"
-        region.keypair_name = "myawskey"
+        region.keypair_name =  ""
       end
       aws.user_data = "#!/bin/bash\necho 'Defaults:ec2-user !requiretty' > /etc/sudoers.d/999-vagrant-cloud-init-requiretty && echo 'Defaults:root !requiretty' >> /etc/sudoers.d/999-vagrant-cloud-init-requiretty && chmod 440 /etc/sudoers.d/999-vagrant-cloud-init-requiretty && sleep 10"
       aws.instance_ready_timeout = 360
@@ -76,7 +76,7 @@ Vagrant.configure("2") do |config|
         'Name' => 'Bigtop'
       }
       override.ssh.username = "ec2-user"
-      override.ssh.private_key_path = "~/.ssh/myawskey.pem"
+      override.ssh.private_key_path = ""
     end
   
     # bigtop.ssh.max_tries = 40

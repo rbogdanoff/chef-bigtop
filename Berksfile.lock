@@ -1,17 +1,10 @@
-{
-  "dependencies": {
-    "bigtop": {
-      "locked_version": "0.1.2",
-      "path": "."
-    },
-    "java": {
-      "locked_version": "1.19.2"
-    },
-    "windows": {
-      "locked_version": "1.12.8"
-    },
-    "chef_handler": {
-      "locked_version": "1.1.4"
-    }
-  }
-}
+DEPENDENCIES
+  bigtop
+    path: .
+    metadata: true
+  java (~> 1.28.0)
+
+GRAPH
+  bigtop (0.1.3)
+    java (~> 1.28.0)
+  java (1.28.0)

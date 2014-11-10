@@ -1,9 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.require_plugin "vagrant-berkshelf"
-Vagrant.require_plugin "vagrant-omnibus"
-
 Vagrant.configure("2") do |config|
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
@@ -12,7 +9,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "bigtop" do |bigtop|
 
     # make sure we have chef installed
-    bigtop.omnibus.chef_version = "11.4.4"
+    bigtop.omnibus.chef_version = "latest"
     
     bigtop.vm.hostname = "bigtop"
   

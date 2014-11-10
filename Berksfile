@@ -1,7 +1,5 @@
-site :opscode
+source "https://supermarket.getchef.com"
 
 metadata
 
-cookbook 'java', '<= 1.19.2'
-# windows is needed by java cookbook
-cookbook 'windows'
+cookbook 'java', '~> 1.28.0'

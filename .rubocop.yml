@@ -1,5 +1,14 @@
+AllCops:
+  Exclude:
+    - 'Vagrantfile'
+    - 'Thorfile'
+    - 'test/**/*'
+
 Encoding:
   Enabled: false
 
 LineLength:
   Max: 99
+
+SingleSpaceBeforeFirstArg:
+  Enabled: false

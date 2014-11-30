@@ -8,9 +8,8 @@ version          '0.1.3'
 
 recipe 'bigtop', 'Installs bigtop'
 
-%w{ centos }.each do |os|
+%w( centos ).each do |os|
   supports os
 end
 
 depends 'java', '~> 1.28.0'
-

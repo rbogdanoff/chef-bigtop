@@ -72,7 +72,7 @@ execute 'seed_hdfs' do
   command 'sudo sh /usr/lib/hadoop/libexec/init-hdfs.sh'
   user 'root'
   action :nothing
- # only_if "test  -z \"`hadoop fs -ls /t*`\""
+  # only_if "test  -z \"`hadoop fs -ls /t*`\""
 end
 
 # create hdfs dir for node.bigtop.user and change some other privs
@@ -86,7 +86,7 @@ execute 'user_hdfs' do
            hadoop fs -chmod -R 1777 /tmp/hadoop-yarn/staging/history/done_intermediate"
   user 'hdfs'
   action :nothing
- # only_if "test  -z \"`hadoop fs -ls /user/#{node.bigtop.user}`\""
+  # only_if "test  -z \"`hadoop fs -ls /user/#{node.bigtop.user}`\""
 end
 
 # after hdfs_seed startup yarn

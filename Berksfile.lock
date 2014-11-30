@@ -2,7 +2,6 @@ DEPENDENCIES
   bigtop
     path: .
     metadata: true
-  java (~> 1.28.0)
 
 GRAPH
   bigtop (0.1.3)

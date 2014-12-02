@@ -2,10 +2,18 @@ require 'spec_helper'
 
 describe 'bigtop::base' do
 
-  # was java install
-  it 'installed oracle java version 6' do
-    expect(command('java')).to return_exit_status 0
-    expect(command('java -version')).to return_stdout /java version \"1.6/
-    expect(command('java -version')).to return_stdout /Java\(TM\) SE Runtime Environment/
+  describe 'java' do
+    describe 'is installed' do
+  	  describe command('java') do
+        its(:exit_status) { should eq 0 }
+      end
+    end
+    describe 'is version 6' do
+      describe command('java -version') do
+        its(:stdout) { should match /java version "1\.6/}
+        its(:stdout) { should match /Java\(TM\) SE Runtime Environment/}
+      end
+    end
   end
+
 end

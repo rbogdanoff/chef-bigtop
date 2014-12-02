@@ -2,7 +2,10 @@ AllCops:
   Exclude:
     - 'Vagrantfile'
     - 'Thorfile'
-    - 'test/**/*'
+    - 'Gemfile'
+    - 'metadata.rb'
+    - 'spec/**'
+    - 'test/**'
 
 Encoding:
   Enabled: false

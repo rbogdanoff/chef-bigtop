@@ -2,7 +2,6 @@ rvm:
   - 2.1.0
 
 script:
-  bundle exec thor cookbook:test
-#  - bundle exec rspec --color
-#  - bundle exec foodcritic . -f any --tags ~FC019
-#  - bundle exec rubocop
+ - bundle exec rspec --color
+ - bundle exec foodcritic . -f any --tags ~FC019
+ - bundle exec rubocop

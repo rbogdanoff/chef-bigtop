@@ -34,21 +34,18 @@ Requirements
 
 ### what you need
 
-* Ruby 1.9.x 
-* the bundle gem  
-  `gem install bundle`
-* Vagrant 1.4.1+ (www.vagrantup.com) - If you have not used Vagrant before, check out their short 'get started' tutorial.
-* VirtualBox 4.3.4 
-* the vagrant plugin vagrant-omnibus
-  `vagrant plugin install vagrant-omnibus`
-* the vagrant plugin vagrant-berkshelf
+* VirtualBox https://www.virtualbox.org/
+
+* install Vagrant https://www.vagrantup.com/
+
+* install the vagrant berkshelf plugin
   `vagrant plugin install vagrant-berkshelf`
 
-* then cd to where you cloned this repository (where the file Gemfile is located), apply the Gemfile.  
-  `bundle install`
-  
-* A VM will be created on your machine with the hostname of 'bigtop' and an ip number of 33.33.33.10.  Add this line to your /etc/hosts file
-  `33.33.33.10     bigtop`  
+* install chefdk https://downloads.getchef.com/chef-dk/
+
+* make sure the chefdk is in begining $PATH (edit your .bash_profile)
+  `export PATH=/opt/chefdk/bin:/opt/chefdk/embedded/bin:$PATH`
+
   
 # Usage - 'how do I run this thing?'
 You now should be set to go.  cd to the top level directory (where Vagrantfile is located) and start the vagrant box

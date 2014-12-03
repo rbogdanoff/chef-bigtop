@@ -2,6 +2,7 @@ AllCops:
   Exclude:
     - 'Vagrantfile'
     - 'Thorfile'
+    - 'Berksfile'
     - 'Gemfile'
     - 'metadata.rb'
     - 'spec/**'

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'bigtop::install'  do
   let(:chef_run) do
-    ChefSpec::Runner.new(platform: 'centos', version: '6.4')
+    ChefSpec::SoloRunner.new(platform: 'centos', version: '6.4')
                     .converge(described_recipe)
   end
   let(:install_components) do

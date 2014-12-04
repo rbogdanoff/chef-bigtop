@@ -2,6 +2,12 @@
 
 This file is used to list changes made in each version of chef-bigtop.
 
+## 0.7.0
+
+* cookbook version (currently 0.7.0) reflects the version of Apache Bigtop it installs
+* now developed using the ChefDK - see the README
+* this will be last release of this cookbook, it is now deprecated.
+
 ## 0.1.2:
 
 * Use Berkshelf 3 to fix dependency issues

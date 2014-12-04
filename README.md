@@ -3,6 +3,10 @@ chef-bigtop
 
 [![Built on Travis](https://secure.travis-ci.org/rbogdanoff/chef-bigtop.png)](http://travis-ci.org/rbogdanoff/chef-bigtop)
 
+### This cookbook is now deprecated
+
+Will be creating a collection of bigtop cookbook in separate repositories
+using Jamie Winsor's 'berksflow' workflow
 
 Description
 ===========
@@ -109,13 +113,8 @@ in Chef and Ruby best practices feedback ron.bogdanoff@gmail.com
 The Future
 ==========
 
-* separate recipes for each hadoop component (hdfs, hbase, hive, etc.)
-* test all bigtop component installations
-* create recipe for a 'bigtop development' VM - used if you want to do dev on bigtop itself
-* create recipe for a cluster
-* add support for other platforms (debian)
-* add support for AWS provider (vagrant stuff)
-* ?
+* This cookbook is now deprecated.  Will be developing a collecton of cookbooks
+for Apache Bigtop
 
 
 # Author

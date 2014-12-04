@@ -5,8 +5,8 @@ AllCops:
     - 'Berksfile'
     - 'Gemfile'
     - 'metadata.rb'
-    - 'spec/**'
-    - 'test/**'
+    - 'spec/**/*'
+    - 'test/**/*'
 
 Encoding:
   Enabled: false

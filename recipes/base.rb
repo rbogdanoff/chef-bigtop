@@ -22,6 +22,6 @@
 # all common components
 
 # bigtop currently requires sun java6
-node.default.java.install_flavor = 'oracle'
+node.set.java.install_flavor = 'oracle'
 node.default.java.oracle.accept_oracle_download_terms = true
 include_recipe 'java'

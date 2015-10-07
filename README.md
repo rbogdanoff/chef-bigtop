@@ -113,7 +113,7 @@ in Chef and Ruby best practices feedback ron.bogdanoff@gmail.com
 The Future
 ==========
 
-* This cookbook is now deprecated.  Will be developing a collecton of cookbooks
+* This cookbook is now deprecated.  Will be developing a collection of cookbooks
 for Apache Bigtop
 
 
